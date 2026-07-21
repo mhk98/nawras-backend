@@ -8,6 +8,9 @@ db.service = require("../app/modules/service/service.model")(
 );
 db.blog = require("../app/modules/blog/blog.model")(db.sequelize, DataTypes);
 
-db.ready = db.sequelize.sync({ alter: true });
+// Do not use `alter: true` here. Sequelize's MySQL alter synchronizer can
+// recreate the same unique indexes on every restart until MySQL reaches its
+// 64-index-per-table limit. Use migrations for schema changes instead.
+db.ready = db.sequelize.sync();
 
 module.exports = db;
