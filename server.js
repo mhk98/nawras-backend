@@ -16,7 +16,7 @@ const allowedOrigins = new Set(
     "http://localhost:3001",
     "http://localhost:3002",
     "https://alnawrasplus.com",
-    "https://admin.alnawrasplus.com"
+    "https://admin.alnawrasplus.com",
     ...(process.env.ALLOWED_ORIGINS || "").split(","),
   ]
     .map((origin) => origin.trim().replace(/\/+$/, ""))
